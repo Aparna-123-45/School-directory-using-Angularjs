@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1>Student signup</h1>
+                    <strong>Signup anytime!</strong>
+                </div>
+                <form [formGroup]="signupform"(ngSubmit)="signup()">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input type="name"formControlName="name" class="form-control" placeholder="enter your name"id="exampleInputEmail1" aria-describedby="emailHelp">
+                   <small *ngIf="signupform.get('name')?.invalid && signupform.get('name')?.touched"class="text-danger">Name is Required</small>     
+                      </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Class</label>
+                       <input type="text"formControlName="class" class="form-control"placeholder="enter your class" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <small *ngIf="signupform.get('class')?.invalid && signupform.get('class')?.touched"class="text-danger">Class is Required</small>   
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Roll Number</label>
+                        <input type="text" formControlName="roll"class="form-control" placeholder="enter your roll number"id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <small *ngIf="signupform.get('roll')?.invalid && signupform.get('roll')?.touched"class="text-danger">Roll number is Required</small>   
+                      </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Section</label>
+                      <input type="section" formControlName="section"class="form-control" placeholder="enter your section"id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <small *ngIf="signupform.get('section')?.invalid && signupform.get('section')?.touched"class="text-danger">Section is Required</small>   
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Password</label>
+                        <input type="password" formControlName="password"class="form-control" placeholder="enter password"id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <small *ngIf="signupform.get('password')?.invalid && signupform.get('password')?.touched"class="text-danger">password is Required</small>   
+                      </div>
+                    
+                    <button style="margin-top: 3px;"type="submit" [disabled]="signupform.invalid"class="btn btn-primary">Signup</button>
+                  </form>
+                <a style="color:maroon;margin-top: 10px;"routerLink="/login">Already Registered? Click here to login</a>
+            </div>
+        </div>
+    </div>
+</div>
+

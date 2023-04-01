@@ -1,0 +1,86 @@
+<nav class="navbar navbar-light bg-dark">
+    <div class="container-fluid">
+        <h2 class="text-light primary py-3">School Directory</h2>
+        <div class="d-flex">
+            
+    <button    (click)="add()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Student</button>&nbsp;
+            <button routerLink="/login" class="btn btn-warning">Logout</button>
+        </div>
+    </div>
+</nav>
+<table class="table mt-4"> 
+    <thead>
+        <tr>
+            <th scope="col">S.Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Class</th>
+            <th scope="col">Roll Number</th>
+            <th scope="col">Section</th> 
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of allstudentdata">
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.class}}</td>
+            <td>{{data.roll}}</td>
+            <td>{{data.section}}</td>
+            <td>
+    <button class="btn btn-info"(click)="edit(data)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>&nbsp;
+                <button class="btn btn-danger"(click)="deletestudent(data)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Shool Management System</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+     <input type="name" formControlName="name"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name">
+     <small *ngIf="formValue.get('name')?.invalid && formValue.get('name')?.touched" class="text-danger">Name is Required</small>
+                   </div>
+     <div class="form-group">
+         <label for="exampleInputEmail1">Class</label>
+            <input type="number"formControlName="class" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your class">
+            <small *ngIf="formValue.get('class')?.invalid && formValue.get('class')?.touched" class="text-danger">class is Required</small>
+                                   </div>
+         <div class="form-group">
+             <label for="exampleInputEmail1">Roll Number</label>
+        <input type="number" formControlName="roll"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Roll number">
+        <small *ngIf="formValue.get('Roll number')?.invalid && formValue.get('Roll number')?.touched" class="text-danger">Roll Number is Required</small>
+                   </div>
+                   <div class="form-group">
+                    <label for="exampleInputEmail1">Section</label>
+                     <input type="section"formControlName="section" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your section">
+                     <small *ngIf="formValue.get('section')?.invalid && formValue.get('section')?.touched" class="text-danger">section is Required</small>
+                                   </div>
+                                   <div class="form-group">
+    <label for="exampleInputEmail1">fee</label>
+     <input type="number" formControlName="fee"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="fee">
+     <small *ngIf="formValue.get('fee')?.invalid && formValue.get('fee')?.touched" class="text-danger">fee</small>
+                   </div>
+                
+ </form>
+        </div>
+        <div style="background: aqua;"class="modal-footer">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+          <button (click)="addstudent()" *ngIf="showadd" type="button" class="btn btn-Success">Add</button>
+          
+          <button *ngIf="showupdate" (click)="update()"type="button" class="btn btn-Success">Update</button>
+    
+      </div>
+    </div>
+  </div>
